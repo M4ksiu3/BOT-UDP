@@ -18,4 +18,9 @@ b.	Temperatura (w zakresie 20 – 120 stopni Celsjusza; dokładność 0,1 stopni
 c.	Status zasilania termometru (możliwe stany: zasilanie sieciowe, zasilanie bateryjne; losowane w momencie nadawania komunikatu do odbiorcy) 
 d.	Identyfikator pomiaru (wartość rosnąca przy każdym nadaniu komunikatu do odbiorcy; zakres <1; UINT8(MAX)>)
 e.	Suma kontrolna przesyłanego pakietu danych (jak najprostsza realizacja, przykładowo: suma poszczególnych bajtów struktury, CRC8, …)
+Suma kontrolna sprawdzana jest w momencie odbieranie sygnału. Jeżeli suma bajtów struktury jest niepoprawna zostaje ona odrzucona z odpowiednim błędem. Status zasilania przekazywany jest jako 0 lub 1 i w ten sam sposób jest dekodowany na serwerze użytkownika w celu zmniejszenia pakietu danych przesyłanych między klientem a serwerem. W celu rozwoju aplikacji i zabezpieczenia jej odpowiedniego bezpieczeństwa należałoby zaimplementować serwer PROXY oczywiście w zależności od konieczności ochrony danych. Timestamp wysyłany jest w sposób liczbowy i po stronie serwera dekodowany tak aby nie przesyłać zbyt dużego formatu danych i dat. 
+Aplikacja została przetestowana na dwóch urządzeniach podłączonych do tej samej sieci lokalnej. Aby system Windows poprawnie odbierał pakiety UDP należy uprzednio odblokować port, na którym chcemy odbierać dane pakiety. 
+ie bateryjne; losowane w momencie nadawania komunikatu do odbiorcy) 
+d.	Identyfikator pomiaru (wartość rosnąca przy każdym nadaniu komunikatu do odbiorcy; zakres <1; UINT8(MAX)>)
+e.	Suma kontrolna przesyłanego pakietu danych (jak najprostsza realizacja, przykładowo: suma poszczególnych bajtów struktury, CRC8, …)
 Aplikacja została przetestowana na dwóch urządzeniach podłączonych do tej samej sieci lokalnej. Aby system Windows poprawnie odbierał pakiety UDP należy uprzednio odblokować port, na którym chcemy odbierać dane pakiety. 
